@@ -10,9 +10,15 @@ objects in project Poker planing(Agile Program YEY)
 
 ---------
 how to install/ run
+
 installing
+
 git clone https://github.com/jfilipp0/Planning__Poker.git
+
 run Frontend Project 
-    - 
+
+    - ng serve 
+
 run Backend Project
+
     -  run PlanningApplication.java 
