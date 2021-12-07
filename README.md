@@ -1,6 +1,7 @@
 # Planning__Poker
 
 objects in project Poker planing(Agile Program YEY)
+
     - Vote {id, user, task}
 
     - User {id, name, nickname}
