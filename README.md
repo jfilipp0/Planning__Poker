@@ -2,7 +2,7 @@
 
 objects in project Poker planing(Agile Program YEY)
 
-    - Vote {id, user, task}
+    - Vote {id, user, task, option}
 
     - User {id, name, nickname}
 
