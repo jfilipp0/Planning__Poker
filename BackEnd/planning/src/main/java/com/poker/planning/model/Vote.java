@@ -1,30 +1,29 @@
 package com.poker.planning.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 import lombok.Data;
-
 
 @Data
 @Entity
 public class Vote {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    
-    private Integer valueOfTask;
+    private String id;
+
+    @Column(name = "value", nullable = false)
+    private String value;
 
     @ManyToOne
-    private Task task;
+    private Member member;
 
-    @OneToOne
-    private User user;
+    @ManyToOne
+    private UserStory story;
 
-    
 }

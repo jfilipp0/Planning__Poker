@@ -1,13 +1,6 @@
 # Planning__Poker
 
-objects in project Poker planing(Agile Program YEY)
-
-    - Vote {id, user, task, option}
-
-    - User {id, name, nickname}
-
-    - Tasks {id, title, description, votes}
-
+objects in project Poker planing
 ---------
 how to install/ run
 

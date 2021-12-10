@@ -1,6 +1,5 @@
 package com.poker.planning.model;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
@@ -13,25 +12,21 @@ import javax.persistence.OneToMany;
 
 import lombok.Data;
 
-
-// @Getter
-// @Setter
 @Data
 @Entity
-public class Task {
+public class UserStory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    
+    private String id;
+
     @Column(name = "description", nullable = false)
     private String description;
 
-    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
-    private Collection<Vote> vote;
+    @Column(name = "status")
+    private StatusEnum status;
 
-    public Task() {
-        this.vote = new ArrayList<>();
-    }
+    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
+    private Collection<Vote> votes;
 
 }

@@ -2,8 +2,8 @@ package com.poker.planning.controller;
 
 import java.util.List;
 
-import com.poker.planning.model.Vote;
-import com.poker.planning.service.VoteService;
+import com.poker.planning.model.Member;
+import com.poker.planning.service.MemberService;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,26 +15,32 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.AllArgsConstructor;
 
+
 @RestController
-@RequestMapping("/vote")
+@RequestMapping("/member")
 @AllArgsConstructor
-public class VoteController {
-    
-    private VoteService voteService;
+public class MemberController {
+
+    private MemberService memberService;
 
     @PostMapping
-    public void create(@RequestBody Vote vote) {
-        voteService.save(vote);
+    public void create(@RequestBody Member member) {
+        memberService.save(member);
     }
 
     @GetMapping
-    public List<Vote> getAll() {
-        return voteService.getAll();
+    public List<Member> getAll() {
+        return memberService.getAll();
     }
 
     @DeleteMapping
     public void delete(@PathVariable String id) {
-        voteService.delete(id);
+        memberService.delete(id);
     }
 
+    //@GetMapping("/{id}")
+    //public Member getById(@PathVariable String id){
+    //    return memberService.findByID(id)
+    //}
+    
 }

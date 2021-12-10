@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.AllArgsConstructor;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/session")
 @AllArgsConstructor
-public class UserController {
+public class PokerPlanningSessionController {
     
 }
