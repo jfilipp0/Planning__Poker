@@ -1,7 +1,6 @@
 package com.poker.planning.repository;
 
 import java.util.Collection;
-import java.util.Optional;
 
 import com.poker.planning.model.Member;
 
