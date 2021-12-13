@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface VoteRepository extends JpaRepository<Vote, String> {
     
-    Collection<Vote> findByPokerSessionId(String id);
+    Collection<Vote> findByStoryId(String id);
     Optional<Vote> findById(String id);
 
 }
