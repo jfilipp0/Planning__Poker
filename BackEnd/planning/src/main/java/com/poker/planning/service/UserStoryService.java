@@ -8,7 +8,10 @@ import com.poker.planning.repository.UserStoryRepository;
 
 import org.springframework.stereotype.Service;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class UserStoryService {
 
     private UserStoryRepository userStoryRepository;

@@ -8,7 +8,10 @@ import com.poker.planning.repository.VoteRepository;
 
 import org.springframework.stereotype.Service;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class VoteService {
     
     private VoteRepository voteRepository;
