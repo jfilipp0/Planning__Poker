@@ -1,6 +1,7 @@
 package com.poker.planning.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.poker.planning.model.Member;
 import com.poker.planning.repository.MemberRepository;
@@ -15,8 +16,8 @@ public class MemberService {
     
     private MemberRepository memberRepository;
 
-    public void save(Member member) {
-        memberRepository.save(member);
+    public Member save(Member member) {
+        return memberRepository.save(member);
     }
 
     public List<Member> getAll() {
@@ -26,4 +27,9 @@ public class MemberService {
     public void delete(String id) {
         memberRepository.deleteById(id);
     }
+
+    public Optional<Member> findById(String id) {
+        return memberRepository.findById(id);
+    }
+    
 }

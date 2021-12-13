@@ -1,6 +1,7 @@
 package com.poker.planning.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.poker.planning.model.Vote;
 import com.poker.planning.repository.VoteRepository;
@@ -12,8 +13,8 @@ public class VoteService {
     
     private VoteRepository voteRepository;
 
-    public void save(Vote vote) {
-        voteRepository.save(vote);
+    public Vote save(Vote vote) {
+        return voteRepository.save(vote);
     }
 
     public List<Vote> getAll() {
@@ -22,6 +23,10 @@ public class VoteService {
 
     public void delete(String id) {
         voteRepository.deleteById(id);
+    }
+
+    public Optional<Vote> findById(String id) {
+        return voteRepository.findById(id);
     }
 
 }

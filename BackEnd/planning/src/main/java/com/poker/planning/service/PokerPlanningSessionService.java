@@ -1,6 +1,7 @@
 package com.poker.planning.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.poker.planning.model.PokerPlanningSession;
 import com.poker.planning.repository.PokerPlanningSessionRepository;
@@ -15,8 +16,8 @@ public class PokerPlanningSessionService {
     
     private PokerPlanningSessionRepository pokerPlanningSessionRepository;
 
-    public void save(PokerPlanningSession session) {
-        pokerPlanningSessionRepository.save(session);
+    public PokerPlanningSession save(PokerPlanningSession session) {
+        return pokerPlanningSessionRepository.save(session);
     }
 
     public List<PokerPlanningSession> getAll() {
@@ -25,6 +26,10 @@ public class PokerPlanningSessionService {
 
     public void delete(String id) {
         pokerPlanningSessionRepository.deleteById(id);
+    }
+
+    public Optional<PokerPlanningSession> findById(String id) {
+        return pokerPlanningSessionRepository.findById(id);
     }
 
 }

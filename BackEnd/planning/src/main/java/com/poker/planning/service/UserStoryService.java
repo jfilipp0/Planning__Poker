@@ -1,6 +1,7 @@
 package com.poker.planning.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.poker.planning.model.UserStory;
 import com.poker.planning.repository.UserStoryRepository;
@@ -12,8 +13,8 @@ public class UserStoryService {
 
     private UserStoryRepository userStoryRepository;
 
-    public void save(UserStory story) {
-        userStoryRepository.save(story);
+    public UserStory save(UserStory story) {
+        return userStoryRepository.save(story);
     }
 
     public List<UserStory> getAll() {
@@ -23,4 +24,9 @@ public class UserStoryService {
     public void delete(String id) {
         userStoryRepository.deleteById(id);
     }
+
+    public Optional<UserStory> findById(String id) {
+        return userStoryRepository.findById(id);
+    }
+    
 }
