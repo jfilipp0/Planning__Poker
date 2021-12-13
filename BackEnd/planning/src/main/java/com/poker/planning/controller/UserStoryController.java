@@ -43,12 +43,10 @@ public class UserStoryController {
     @PutMapping(value = "/{id}")
     public ResponseEntity<?> update(@PathVariable("id") String id, @RequestBody UserStory story) {
         return storiesService.findById(id).map(record -> {
-            record.setVeiculo(story.getVeiculo());
-            record.setMarca(story.getMarca().toString());
-            record.setAno(story.getAno());
-            record.setDescricao(story.getDescricao());
-            record.setVendido(story.getVendido());
-            UserStory updated = userstorieService.save(record);
+            record.setDescription(story.getDescription());
+            record.setStatus(story.getStatus());
+            record.setVotes(story.getVotes());
+            UserStory updated = storiesService.save(record);
 
             return ResponseEntity.ok().body(updated);
         }).orElse(ResponseEntity.notFound().build());
@@ -57,13 +55,10 @@ public class UserStoryController {
 	@PatchMapping("/{id}")
 	public ResponseEntity<?> updateByPatch(@PathVariable("id") String id, @RequestBody UserStory story){
 		return storiesService.findById(id).map(record -> {
-			record.setVeiculo(story.getVeiculo() != null ? story.getVeiculo() : record.getVeiculo());
-			record.setMarca(story.getMarca() != null ? story.getMarca().toString() : record.getMarca().toString());
-			record.setAno(story.getAno() != null ? story.getAno() : record.getAno());
-			record.setDescricao(story.getDescricao() != null ? story.getDescricao() : record.getDescricao());
-			record.setVendido(story.getVendido() != null ? story.getVendido() : record.getVendido());
-			record.setCreated(story.getCreated() != null ? story.getCreated() : record.getCreated());
-			UserStory updated = userstorieService.save(record);
+			record.setDescription(story.getDescription() != null ? story.getDescription() : record.getDescription());
+			record.setStatus(story.getStatus() != null ? story.getStatus() : record.getStatus());
+			record.setVotes(story.getVotes() != null ? story.getVotes() : record.getVotes());
+			UserStory updated = storiesService.save(record);
 			
 			return ResponseEntity.ok().body(updated);
 		}).orElse(ResponseEntity.notFound().build());

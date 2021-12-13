@@ -42,11 +42,9 @@ public class PokerPlanningSessionController {
     @PutMapping(value = "/{id}")
     public ResponseEntity<?> update(@PathVariable("id") String id, @RequestBody PokerPlanningSession session) {
         return sessionService.findById(id).map(record -> {
-            record.setVeiculo(session.getVeiculo());
-            record.setMarca(session.getMarca().toString());
-            record.setAno(session.getAno());
-            record.setDescricao(session.getDescricao());
-            record.setVendido(session.getVendido());
+            record.setTitle(session.getTitle());
+            record.setMembers(session.getMembers());
+            record.setUsersStories(session.getUsersStories());
             PokerPlanningSession updated = sessionService.save(record);
 
             return ResponseEntity.ok().body(updated);
@@ -56,12 +54,9 @@ public class PokerPlanningSessionController {
 	@PatchMapping("/{id}")
 	public ResponseEntity<?> updateByPatch(@PathVariable("id") String id, @RequestBody PokerPlanningSession session){
 		return sessionService.findById(id).map(record -> {
-			record.setVeiculo(session.getVeiculo() != null ? session.getVeiculo() : record.getVeiculo());
-			record.setMarca(session.getMarca() != null ? session.getMarca().toString() : record.getMarca().toString());
-			record.setAno(session.getAno() != null ? session.getAno() : record.getAno());
-			record.setDescricao(session.getDescricao() != null ? session.getDescricao() : record.getDescricao());
-			record.setVendido(session.getVendido() != null ? session.getVendido() : record.getVendido());
-			record.setCreated(session.getCreated() != null ? session.getCreated() : record.getCreated());
+			record.setTitle(session.getTitle() != null ? session.getTitle() : record.getTitle());
+			record.setMembers(session.getMembers() != null ? session.getMembers() : record.getMembers());
+			record.setUsersStories(session.getUsersStories() != null ? session.getUsersStories() : record.getUsersStories());
 			PokerPlanningSession updated = sessionService.save(record);
 			
 			return ResponseEntity.ok().body(updated);

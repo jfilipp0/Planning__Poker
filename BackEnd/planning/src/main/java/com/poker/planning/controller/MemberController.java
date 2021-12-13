@@ -44,11 +44,9 @@ public class MemberController {
     @PutMapping(value = "/{id}")
     public ResponseEntity<?> update(@PathVariable("id") String id, @RequestBody Member member) {
         return memberService.findById(id).map(record -> {
-            record.setVeiculo(member.getVeiculo());
-            record.setMarca(member.getMarca().toString());
-            record.setAno(member.getAno());
-            record.setDescricao(member.getDescricao());
-            record.setVendido(member.getVendido());
+            record.setName(member.getName());
+            record.setPokerSession(member.getPokerSession());
+            record.setVotes(member.getVotes());
             Member updated = memberService.save(record);
 
             return ResponseEntity.ok().body(updated);
@@ -58,12 +56,9 @@ public class MemberController {
 	@PatchMapping("/{id}")
 	public ResponseEntity<?> updateByPatch(@PathVariable("id") String id, @RequestBody Member member){
 		return memberService.findById(id).map(record -> {
-			record.setVeiculo(member.getVeiculo() != null ? member.getVeiculo() : record.getVeiculo());
-			record.setMarca(member.getMarca() != null ? member.getMarca().toString() : record.getMarca().toString());
-			record.setAno(member.getAno() != null ? member.getAno() : record.getAno());
-			record.setDescricao(member.getDescricao() != null ? member.getDescricao() : record.getDescricao());
-			record.setVendido(member.getVendido() != null ? member.getVendido() : record.getVendido());
-			record.setCreated(member.getCreated() != null ? member.getCreated() : record.getCreated());
+			record.setName(member.getName() != null ? member.getName() : record.getName());
+			record.setVotes(member.getVotes() != null ? member.getVotes() : record.getVotes());
+            record.setPokerSession(member.getPokerSession() != null ? member.getPokerSession() : record.getPokerSession());
 			Member updated = memberService.save(record);
 			
 			return ResponseEntity.ok().body(updated);

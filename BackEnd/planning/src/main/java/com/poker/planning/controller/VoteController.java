@@ -43,12 +43,10 @@ public class VoteController {
     @PutMapping(value = "/{id}")
     public ResponseEntity<?> update(@PathVariable("id") String id, @RequestBody Vote vote) {
         return voteService.findById(id).map(record -> {
-            record.setVeiculo(vote.getVeiculo());
-            record.setMarca(vote.getMarca().toString());
-            record.setAno(vote.getAno());
-            record.setDescricao(vote.getDescricao());
-            record.setVendido(vote.getVendido());
-            Vote updated = userstorieService.save(record);
+            record.setValue(vote.getValue());
+            record.setMember(vote.getMember());
+            record.setStory(vote.getStory());
+            Vote updated = voteService.save(record);
 
             return ResponseEntity.ok().body(updated);
         }).orElse(ResponseEntity.notFound().build());
@@ -57,13 +55,10 @@ public class VoteController {
 	@PatchMapping("/{id}")
 	public ResponseEntity<?> updateByPatch(@PathVariable("id") String id, @RequestBody Vote vote){
 		return voteService.findById(id).map(record -> {
-			record.setVeiculo(vote.getVeiculo() != null ? vote.getVeiculo() : record.getVeiculo());
-			record.setMarca(vote.getMarca() != null ? vote.getMarca().toString() : record.getMarca().toString());
-			record.setAno(vote.getAno() != null ? vote.getAno() : record.getAno());
-			record.setDescricao(vote.getDescricao() != null ? vote.getDescricao() : record.getDescricao());
-			record.setVendido(vote.getVendido() != null ? vote.getVendido() : record.getVendido());
-			record.setCreated(vote.getCreated() != null ? vote.getCreated() : record.getCreated());
-			Vote updated = userstorieService.save(record);
+			record.setValue(vote.getValue() != null ? vote.getValue() : record.getValue());
+			record.setMember(vote.getMember() != null ? vote.getMember() : record.getMember());
+			record.setStory(vote.getStory() != null ? vote.getStory() : record.getStory());
+			Vote updated = voteService.save(record);
 			
 			return ResponseEntity.ok().body(updated);
 		}).orElse(ResponseEntity.notFound().build());
